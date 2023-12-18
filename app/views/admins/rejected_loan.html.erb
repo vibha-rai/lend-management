@@ -1,0 +1,25 @@
+<!-- app/views/admins/active_loan.html.erb -->
+<h1>Active Loans</h1>
+<% if @active_loans.any? %>
+  <table>
+    <thead>
+    <tr>
+      <th>User</th>
+      <th>Amount</th>
+      <!-- Add other loan details as needed -->
+    </tr>
+    </thead>
+    <tbody>
+    <% @active_loans.each do |loan| %>
+      <tr>
+        <td><%= loan.user.name %></td>
+        <td><%= loan.amount %></td>
+        <!-- Add other loan details as needed -->
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No active loans at the moment.</p>
+<% end %>
+<%= link_to "Back to Dashboard", admin_path %>

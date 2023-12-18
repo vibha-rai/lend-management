@@ -1,0 +1,62 @@
+<div class="loan-management-hero">
+  <img src="https://www.goodreturns.in/img/2020/06/loan-28-1493369966-1591449066.jpg" alt="Loan Management System">
+  <h1>Welcome to the Loan Management System</h1>
+</div>
+
+<div class="login-options">
+  <div class="card user-login">
+    <i class="fas fa-user fa-2x"></i>
+    <h2>User Login</h2>
+    <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %>
+  </div>
+
+  <div class="card admin-login">
+    <i class="fas fa-lock fa-2x"></i>
+    <h2>Admin Login</h2>
+    <%= link_to "Log In", new_admin_session_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<style>
+    .loan-management-hero {
+        position: relative;
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .loan-management-hero h1 {
+        font-size: 2em;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .login-options {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .card {
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .user-login {
+        background-color: #f5f5f5;
+    }
+
+    .admin-login {
+        background-color: #eee;
+    }
+
+    .card p {
+        margin-top: 10px;
+    }
+
+    .btn-primary {
+        margin-top: 15px;
+    }
+</style>
+

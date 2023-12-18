@@ -1,0 +1,18 @@
+<h1>Loan Requests</h1>
+<% @loan_requests.each do |loan| %>
+  <p>User: <%= loan.user.name %>, Amount: <%= loan.amount %></p>
+
+  <!-- Form for Approving -->
+  <%= form_with(url: approve_loan_admin_path(loan), method: :post) do |form| %>
+    <%= form.label :interest_rate %>
+    <%= form.number_field :interest_rate, step: 0.01 %>
+    <%= form.submit "Approve" %>
+  <% end %>
+
+  <!-- Form for Rejecting -->
+  <%= form_with(url: reject_loan_admin_path(loan), method: :post) do |form| %>
+    <%= form.submit "Reject" %>
+  <% end %>
+
+<% end %>
+<%= link_to "Back to Dashboard", admin_path %>

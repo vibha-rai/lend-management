@@ -1,0 +1,21 @@
+<!-- app/views/admins/index.html.erb -->
+<h1>Welcome, <%= @admin.name %>!</h1>
+
+<h2>Requested Loans:</h2>
+<% @active_loans.each do |loan| %>
+  <p><%= link_to "Loan ##{loan.id}", loan_path(loan) %></p>
+  <%= link_to "Approve", approve_loan_admin_path(loan), method: :post %> |
+  <%= link_to "Reject", reject_loan_admin_path(loan), method: :post %>
+<% end %>
+
+<h2>Active Loans:</h2>
+<% @active_loans.each do |loan| %>
+  <p><%= link_to "Loan ##{loan.id}", loan_path(loan) %></p>
+  <%= link_to "Approve", approve_loan_admin_path(loan), method: :post %> |
+  <%= link_to "Reject", reject_loan_admin_path(loan), method: :post %>
+<% end %>
+
+<h2>Repaid Loans:</h2>
+<% @repaid_loans.each do |loan| %>
+  <p><%= link_to "Loan ##{loan.id}", loan_path(loan) %></p>
+<% end %>

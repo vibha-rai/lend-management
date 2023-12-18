@@ -1,0 +1,13 @@
+<!-- app/views/loans/show.html.erb -->
+<h1>Loan Details</h1>
+
+<p>Loan ID: <%= @loan.id %></p>
+<p>Amount: <%= format_indian_currency(@loan.amount) %></p>
+<p>Interest Rate: <%= @loan.interest_rate %>%</p>
+<p>Status: <%= @loan.state.capitalize %></p>
+
+<% if @loan.state == 'open' %>
+  <%= link_to "Repay Loan", repay_loan_user_path(@loan.user, loan_id: @loan.id), method: :post %>
+<% end %>
+
+<%= link_to "Back to Loans", loans_path %>

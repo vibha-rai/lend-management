@@ -1,0 +1,20 @@
+<!-- app/views/loans/new.html.erb -->
+<h1>New Loan Request</h1>
+
+<%= form_with(model: @loan, url: loans_path, method: :post) do |form| %>
+  <div>
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :interest_rate %>
+    <%= form.number_field :interest_rate %>
+  </div>
+
+  <div>
+    <%= form.submit "Submit Loan Request" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to Loans", loans_path %>

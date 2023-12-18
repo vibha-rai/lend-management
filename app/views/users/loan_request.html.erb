@@ -1,0 +1,14 @@
+<!-- app/views/users/loan_requests.html.erb -->
+<h1>Loan Requests</h1>
+<% @loan_requests.each do |loan| %>
+  <p>Loan Request: <%= loan.amount %></p>
+  <% if loan.approved? %>
+    <%= link_to "Confirm Interest Rate", confirm_interest_rate_user_path(current_user, loan), method: :get %>
+    <%= link_to "Reject Interest Rate", reject_interest_rate_user_path(current_user, loan), method: :get %>
+  <% else %>
+    <p>Status: <%= loan.state.capitalize %></p>
+    <%= link_to "Repay Loan", repay_loan_user_path(current_user, loan), method: :get %>
+  <% end %>
+<% end %>
+
+<%= link_to "Back to Dashboard", user_path %>

@@ -1,0 +1,25 @@
+<!-- app/views/admins/repaid_loan.html.erb -->
+<h1>Repaid Loans</h1>
+<% if @repaid_loans.any? %>
+  <table>
+    <thead>
+    <tr>
+      <th>User</th>
+      <th>Amount</th>
+      <!-- Add other loan details as needed -->
+    </tr>
+    </thead>
+    <tbody>
+    <% @repaid_loans.each do |loan| %>
+      <tr>
+        <td><%= loan.user.name %></td>
+        <td><%= loan.amount %></td>
+        <!-- Add other loan details as needed -->
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No repaid loans at the moment.</p>
+<% end %>
+<%= link_to "Back to Dashboard", admin_path %>

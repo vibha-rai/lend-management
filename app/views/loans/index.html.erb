@@ -1,0 +1,6 @@
+<!-- app/views/loans/index.html.erb -->
+<h1>All Loans</h1>
+
+<% @loans.each do |loan| %>
+  <p><%= link_to "Loan ##{loan.id}", loan_path(loan) %></p>
+<% end %>

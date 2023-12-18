@@ -1,0 +1,6 @@
+<!-- app/views/users/loan_details.html.erb -->
+<h1>Loan Details</h1>
+<p>Loan Amount: <%= @loan.amount %></p>
+<p>Interest Rate: <%= @loan.interest_rate %></p>
+<p>Status: <%= @loan.state.capitalize %></p>
+<%= link_to "Back to Dashboard", user_path %>

@@ -1,0 +1,17 @@
+<h1>Welcome, <%= @user.name %></h1>
+
+<h2>Wallet Balance: <%= format_indian_currency(@wallet_balance) %></h2>
+
+<h2>Loan Requests</h2>
+<% @loans.each_with_index do |loan, i| %>
+  <p>
+    <%= i + 1 %>.
+    Amount: <%= format_indian_currency(loan.amount) %>,
+     Interest Rate: <%= loan.interest_rate %>%,
+     Status: <%= loan.state.capitalize %>
+  </p>
+<% end %>
+
+<%= link_to 'New Loan Request', loan_form_user_path %>
+<%= link_to 'Loan Request', loan_request_user_path %>
+<%= link_to 'Loan Detail', loan_detail_user_path %>

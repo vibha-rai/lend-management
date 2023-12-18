@@ -1,0 +1,6 @@
+<!-- app/views/shared/_logout_link.html.erb -->
+<% if user_signed_in? %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% elsif admin_signed_in? %>
+  <%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
+<% end %>
