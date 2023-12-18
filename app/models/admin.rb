@@ -6,6 +6,7 @@ class Admin < ApplicationRecord
 
   has_many :loans
 
+  
   def credit_wallet(amount)
     update!(wallet_amount: wallet_amount + amount)
   end
