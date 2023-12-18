@@ -8,7 +8,6 @@ class Loan < ApplicationRecord
   # app/models/loan.rb
   validates :interest_rate, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_nil: true
 
-  # Default interest rate is 5%
   after_initialize :set_default_interest_rate, if: :new_record?
 
   aasm column: 'state' do
@@ -19,15 +18,19 @@ class Loan < ApplicationRecord
     state :rejected
 
     event :approve do
-      transitions from: :requested, to: :approved, after: :set_interest_rate
+      transitions from: :requested, to: :approved
     end
 
-    event :reject do
-      transitions from: :approved, to: :rejected
+    event :reject_by_admin do
+      transitions from: :requested, to: :rejected
     end
 
     event :confirm do
       transitions from: :approved, to: :open
+    end
+
+    event :reject_by_user do
+      transitions from: :approved, to: :rejected
     end
 
     event :repay do

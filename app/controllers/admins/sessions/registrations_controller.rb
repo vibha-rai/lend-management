@@ -59,4 +59,10 @@ class Admins::Sessions::RegistrationsController < Devise::RegistrationsControlle
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def sign_up_params
+    params.require(:admin).permit(:email, :password, :password_confirmation, :name)
+  end
 end

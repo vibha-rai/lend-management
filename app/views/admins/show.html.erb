@@ -1,9 +1,9 @@
-<!-- app/views/admins/show.html.erb -->
 <h1>Hello, <%= @admin.name %>!</h1>
 
 <p>Your Wallet Amount: <%= format_indian_currency(@admin.wallet_amount) %></p>
 
-<%= link_to "Loan Requests", loan_request_admin_path %>
-<%= link_to "Active Loans", active_loan_admin_path %>
-<%= link_to "Repaid Loans", repaid_loan_admin_path %>
-<%= link_to "Rejected Loans", rejected_loan_admin_path %>
+<%= link_to "Loan Requests", loan_request_admin_path, class: 'button loan-requests' %>
+<%= link_to "Active Loans", active_loan_admin_path, class: 'button active-loans' %>
+<%= link_to "Repaid Loans", repaid_loan_admin_path, class: 'button repaid-loans' %>
+<%= link_to "Rejected Loans", rejected_loan_admin_path, class: 'button rejected-loans' %>
+

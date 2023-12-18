@@ -30,19 +30,19 @@ class UsersController < ApplicationController
 
   def confirm_interest_rate
     @loan = current_user.loans.find(params[:id])
-    if @loan.confirm!
-      flash[:notice] = 'Interest rate confirmed successfully.'
+    loan_allow = wallet_logic("user_credit", @loan.id)
+    if loan_allow && @loan.confirm!
+      flash.now[:notice] = 'Interest rate confirmed successfully.'
     else
-      flash[:alert] = 'Failed to confirm interest rate.'
+      flash.now[:alert] = 'Failed to confirm interest rate.'
     end
-
     redirect_to user_path
   end
 
   def reject_interest_rate
     @loan = current_user.loans.find(params[:id])
 
-    if @loan.reject!
+    if @loan.reject_by_user!
       flash[:notice] = 'Interest rate rejected successfully.'
     else
       flash[:alert] = 'Failed to reject interest rate.'
@@ -51,16 +51,20 @@ class UsersController < ApplicationController
     redirect_to user_path
   end
 
+  def repay_loan_form
+    @loans = current_user.loans.open
+  end
+
   def repay_loan
-    @loan = current_user.loans.find(params[:id])
+    @loan = current_user.loans.find(params[:loan_id])
+    wallet_logic("user_debit", @loan.id)
 
-    if @loan.repay
-      flash[:notice] = 'Loan repaid successfully.'
+    if @loan.repay!
+      flash.now[:notice] = 'Loan repaid successfully.'
+      redirect_to user_path
     else
-      flash[:alert] = 'Failed to repay the loan.'
+      flash.now[:alert] = 'Failed to repay the loan.'
     end
-
-    redirect_to user_path
   end
 
   def loan_detail

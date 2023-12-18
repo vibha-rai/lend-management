@@ -1,4 +1,3 @@
-<!-- app/views/loans/show.html.erb -->
 <h1>Loan Details</h1>
 
 <p>Loan ID: <%= @loan.id %></p>
@@ -7,7 +6,7 @@
 <p>Status: <%= @loan.state.capitalize %></p>
 
 <% if @loan.state == 'open' %>
-  <%= link_to "Repay Loan", repay_loan_user_path(@loan.user, loan_id: @loan.id), method: :post %>
+  <%= link_to "Repay Loan", repay_loan_user_path(@loan.user, loan_id: @loan.id), method: :post, class: "button-style"  %>
 <% end %>
 
-<%= link_to "Back to Loans", loans_path %>
+<%= link_to "Back to Loans", loans_path, class: "button-style"  %>

@@ -13,3 +13,49 @@
  *= require_tree .
  *= require_self
  */
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.loan-requests {
+    background-color: #3498db; /* Blue */
+}
+
+.active-loans {
+    background-color: #27ae60; /* Green */
+}
+
+.repaid-loans {
+    background-color: #f39c12; /* Orange */
+}
+
+.rejected-loans {
+    background-color: #e74c3c; /* Red */
+}
+
+/* Hover effect */
+.button:hover {
+    background-color: #2c3e50; /* Darker color on hover */
+}
+/* app/assets/stylesheets/application.css */
+
+.button-style {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
