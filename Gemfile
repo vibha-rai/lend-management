@@ -76,3 +76,4 @@ gem "devise"
 gem "aasm"
 gem "sidekiq"
 gem "pry"
+gem 'sidekiq-cron'

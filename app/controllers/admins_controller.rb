@@ -19,10 +19,10 @@ class AdminsController < ApplicationController
   def approve_loan
     @loan = Loan.find(params[:id])
     @loan.interest_rate = params[:interest_rate] if params[:interest_rate].present?
-
+    @loan.update(interest_rate: @loan.interest_rate)
     if @loan.approve!
       flash.now[:notice] = 'Loan approved successfully.'
-      redirect_to loan_request_admin_path
+      redirect_to admin_path
     else
       flash.now[:alert] = 'Failed to approve the loan.'
       render :loan_requests
@@ -31,9 +31,9 @@ class AdminsController < ApplicationController
 
   def reject_loan
     @loan = Loan.find(params[:id])
-    if @loan.approve!
-      flash.now[:notice] = 'Loan approved successfully.'
-      redirect_to loan_request_admin_path
+    if @loan.reject_by_admin!
+      flash.now[:notice] = 'Loan rejected successfully.'
+      redirect_to admin_path
     else
       flash.now[:alert] = 'Failed to approve the loan.'
       render :loan_requests
