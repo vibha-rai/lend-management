@@ -43,16 +43,4 @@ class Loan < ApplicationRecord
   def set_default_interest_rate
     self.interest_rate ||= 5
   end
-
-  def calculate_interest_rate
-    self.interest_rate = perform_calculate_interest_rate
-  end
-
-  def perform_calculate_interest_rate
-    user_interest_rate = self.user&.interest_rate || 5
-    loan_amount_factor = self.amount > 1000 ? 1.1 : 1.0
-    calculated_interest_rate = user_interest_rate * loan_amount_factor
-
-    [0, [calculated_interest_rate, 0.20].min].max
-  end
 end
